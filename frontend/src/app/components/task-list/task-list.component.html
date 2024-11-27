@@ -1,0 +1,33 @@
+<div class="task-list">
+  <div *ngFor="let task of tasks" class="task">
+    <div class="task-header">
+      <h3 [class]="getPriorityClass(task.priority)">
+        {{ task.title }}
+      </h3>
+      <div class="task-actions">
+        <button (click)="openTaskModal('edit', task)">Modifier</button>
+        <button (click)="deleteTask(task.id)">Supprimer</button>
+      </div>
+    </div>
+    <p>Status : <span [class]="getStatusClass(task.status)">{{ task.status }}</span></p>
+    <p>Priorité : {{ task.priority }}</p>
+    <div class="subtasks">
+      <h4>Sous-tâches :</h4>
+      <ul>
+        <li *ngFor="let subTask of task.subTasks" [class]="getStatusClass(subTask.status)">
+          {{ subTask.title }} - {{ subTask.status }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button class="add-task-button" (click)="openTaskModal('create')">Ajouter une tâche</button>
+
+  <!-- Composant modal -->
+  <app-task-modal
+    [isOpen]="isOpen"
+    [mode]="mode"
+    [formData]="formData"
+    (save)="onSaveTask($event)"
+    (close)="onCloseModal()"
+  ></app-task-modal>
+</div>
