@@ -1,10 +1,12 @@
-<full-calendar [options]="calendarOptions"></full-calendar>
+<div class="calendar-container">
+  <full-calendar [options]="calendarOptions"></full-calendar>
 
-<app-event-modal
-  [isOpen]="isOpen"
-  [mode]="mode"
-  [formData]="formData"
-  (save)="onSave($event)"
-  (close)="onClose()"
-  (delete)="onDelete($event)"
-></app-event-modal>
+  <app-event-modal
+    [isOpen]="isOpen"
+    [mode]="mode"
+    [formData]="formData"
+    (save)="onSave($event)"
+    (close)="onClose()"
+    (delete)="onDelete($event)"
+  ></app-event-modal>
+</div>

@@ -11,11 +11,10 @@ import { EventModalComponent } from '../event-modal/event-modal.component';
   templateUrl: './calendar.component.html',
   standalone: true,
   imports: [FullCalendarModule, EventModalComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Ajouté ici pour autoriser full-calendar
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent {
-  // Propriétés de gestion des événements
   formData: any = {
     id: '',
     title: '',
@@ -28,8 +27,8 @@ export class CalendarComponent {
     recurring: null,
   };
 
-  isOpen: boolean = false; // Gestion de l'ouverture du modal
-  mode: 'create' | 'edit' = 'create'; // Mode de gestion : création ou modification
+  isOpen: boolean = false;
+  mode: 'create' | 'edit' = 'create';
 
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
@@ -47,7 +46,6 @@ export class CalendarComponent {
     this.loadEvents();
   }
 
-  // Charger les événements depuis le backend
   loadEvents() {
     this.eventService.getEvents().subscribe(events => {
       this.calendarOptions.events = events.map(event => ({
@@ -61,7 +59,6 @@ export class CalendarComponent {
   }
 
   handleDateClick(arg: any) {
-    console.log('Date clicked:', arg.dateStr); // Pour voir si la méthode est appelée
     this.formData = {
       title: '',
       startDate: arg.dateStr,
@@ -77,7 +74,6 @@ export class CalendarComponent {
   }
   
   handleEventClick(arg: any) {
-    console.log('Event clicked:', arg.event.title); // Pour voir si la méthode est appelée
     const event = arg.event;
     this.formData = {
       id: event.id,
@@ -95,45 +91,41 @@ export class CalendarComponent {
   }
   
 
-  // Sauvegarde des modifications ou création
   onSave(eventData: any) {
     if (this.mode === 'create') {
       this.eventService.createEvent(eventData).subscribe(() => {
         alert('Événement créé avec succès');
-        this.loadEvents(); // Recharge les événements
+        this.loadEvents();
         this.isOpen = false;
       });
     } else if (this.mode === 'edit') {
       this.eventService.updateEvent(eventData.id, eventData).subscribe(() => {
         alert('Événement modifié avec succès');
-        this.loadEvents(); // Recharge les événements
+        this.loadEvents();
         this.isOpen = false;
       });
     }
   }
-  onDelete(eventId: string) {
-    console.log('ID reçu pour suppression :', eventId); // Debug
   
-    // Vérifiez que l'ID n'est pas null ou undefined
+  onDelete(eventId: string) {
+    console.log('ID reçu pour suppression :', eventId);
+  
     if (!eventId) {
       console.error('ID de l\'événement non défini !');
       return;
     }
   
     this.eventService.deleteEvent(eventId).subscribe(() => {
-      console.log('Événement supprimé avec succès'); // Debug
+      console.log('Événement supprimé avec succès');
       alert('Événement supprimé avec succès');
-      this.loadEvents(); // Recharge les événements
+      this.loadEvents();
       this.isOpen = false;
     }, error => {
-      console.error('Erreur lors de la suppression :', error); // Debug
+      console.error('Erreur lors de la suppression :', error);
       alert('Échec de la suppression de l\'événement');
     });
   }
   
-  
-
-  // Fermeture du modal
   onClose() {
     this.isOpen = false;
   }

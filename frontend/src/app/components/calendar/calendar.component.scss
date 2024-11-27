@@ -1,4 +1,18 @@
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.full-calendar {
+  flex: 1;
+  overflow: hidden;
+}
+
 .fc {
-    font-family: Arial, sans-serif;
-  }
+  font-family: Arial, sans-serif;
+  height: 100%;
+}
   
