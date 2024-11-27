@@ -1,81 +1,176 @@
+/* Container global */
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Section gauche */
+.leftSection {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.leftSection .logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 50px;
+  cursor: pointer;
+}
+
+/* Formulaire */
 .form-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  
-    h1 {
-      font-size: 26px;
-      margin-bottom: 20px;
-      color: #333;
-    }
-  
-    .form-group {
-      margin-bottom: 20px;
-      text-align: left;
-  
-      label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: #444;
-      }
-  
-      input,
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-        outline: none;
-        transition: border-color 0.3s;
-  
-        &:focus {
-          border-color: #4ade80;
-        }
-      }
-  
-      textarea {
-        resize: vertical;
-      }
-    }
-  
-    .modern-btn {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      background-color: #4ade80;
-      color: white;
-      transition: transform 0.3s, box-shadow 0.3s;
-  
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-    }
-  
-    .switch-page {
-      margin-top: 20px;
-      font-size: 14px;
-      text-align: center;
-  
-      a {
-        color: #4ade80;
-        text-decoration: none;
-        font-weight: bold;
-  
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
+  width: 100%;
+  max-width: 400px;
+  margin-top: 80px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+  border-color: #0693C2;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button.modern-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #0693C2;
+  color: white;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button.modern-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Section droite (image) */
+.RightSection {
+  width: 50%;
+  position: relative;
+}
+
+.register-side-wallpaper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+/* Media queries pour appareils plus petits */
+
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
   }
-  
+
+  .leftSection, .RightSection {
+    width: 100%;
+    height: auto;
+  }
+
+  .leftSection .logo {
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  .RightSection .register-side-wallpaper {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  input, textarea {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  button.modern-btn {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .switch-page {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .leftSection .logo {
+    height: 40px;
+  }
+
+  .form-container {
+    width: 95%;
+    margin-top: 20px;
+  }
+
+  .RightSection .register-side-wallpaper {
+    height: 200px;
+  }
+}
