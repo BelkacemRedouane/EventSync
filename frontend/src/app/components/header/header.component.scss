@@ -1,29 +1,30 @@
-/* Personnalisation du bouton profil */
-.dropdown-toggle {
-  background-color: transparent;
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Sépare les éléments en deux côtés */
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.welcome-message {
+  margin-right: auto; /* Repousse les autres éléments à droite */
+}
+
+.logout-btn {
+  background-color: #dc3545; /* Couleur rouge Bootstrap */
+  color: white;
   border: none;
-  font-size: 20px;
-  color: #333;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
 }
 
-.dropdown-toggle:focus {
-  outline: none;
-}
-
-.dropdown-menu {
-  min-width: 250px;
-}
-
-.dropdown-item {
-  font-size: 16px;
-  padding: 10px 15px;
-}
-
-.dropdown-item:hover {
-  background-color: #f1f1f1;
-  color: #007bff;
-}
-
-.dropdown-divider {
-  margin: 5px 0;
+.logout-btn:hover {
+  background-color: #c82333; /* Rouge plus foncé au survol */
 }
