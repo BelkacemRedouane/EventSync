@@ -31,7 +31,7 @@
 /* Formulaire */
 .form-container {
   width: 100%;
-  max-width: 400px;
+  max-width: fit-content;
   margin-top: 80px;
   padding: 20px;
   background-color: white;
@@ -173,4 +173,18 @@ button.modern-btn:hover {
   .RightSection .register-side-wallpaper {
     height: 200px;
   }
+}
+.switch-page {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.switch-page a {
+  color: #0693C2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.switch-page a:hover {
+  text-decoration: underline;
 }

@@ -1,12 +1,21 @@
 <div *ngIf="errorMessage" class="error-message">
   {{ errorMessage }}
 </div>
+
 <form (ngSubmit)="onSave()">
-  <div>
+  <div class="form-group">
     <label for="title">Titre</label>
-    <input id="title" [(ngModel)]="formData.title" name="title" required />
+    <input
+      id="title"
+      type="text"
+      [(ngModel)]="formData.title"
+      name="title"
+      required
+      placeholder="Entrez le titre de l'événement"
+    />
   </div>
-  <div>
+
+  <div class="form-group">
     <label for="startDateTime">Date et heure de début</label>
     <input
       id="startDateTime"
@@ -16,7 +25,8 @@
       required
     />
   </div>
-  <div>
+
+  <div class="form-group">
     <label for="endDateTime">Date et heure de fin</label>
     <input
       id="endDateTime"
@@ -26,16 +36,25 @@
       required
     />
   </div>
-  <div>
+
+  <div class="form-group">
     <label for="priority">Priorité</label>
-    <select id="priority" [(ngModel)]="formData.priority" name="priority" required>
+    <select
+      id="priority"
+      [(ngModel)]="formData.priority"
+      name="priority"
+      required
+    >
       <option value="urgent">Urgent</option>
       <option value="moyen">Moyen</option>
       <option value="faible">Faible</option>
     </select>
   </div>
+
   <div class="modal-actions">
-    <button type="button" (click)="onClose()">Annuler</button>
-    <button type="submit">{{ mode === 'create' ? 'Créer' : 'Modifier' }}</button>
+    <button type="button" (click)="onClose()" class="cancel-button">Annuler</button>
+    <button type="submit" class="save-button">
+      {{ mode === 'create' ? 'Créer' : 'Modifier' }}
+    </button>
   </div>
 </form>
